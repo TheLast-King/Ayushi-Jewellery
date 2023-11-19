@@ -18,7 +18,7 @@ function App() {
   const images = [img1, img2, img3, img4, img5, img7, img8, img9, img6];
 
   return (
-    <div className='w-full flex flex-wrap aspect-w-1 aspect-h-1  rounded-lg overflow-hidden'>
+    <div className='w-full flex flex-wrap aspect-w-1 aspect-h-1'>
       {images.map((image, index) => (
         <div key={index} className='w-1/2 sm:w-1/2 md:w-1/4 p-2 relative'>
           <div className='relative'>
