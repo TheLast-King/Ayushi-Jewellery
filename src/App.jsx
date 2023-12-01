@@ -20,6 +20,7 @@ import img17 from './images/17.jpeg';
 import img18 from './images/18.jpeg';
 
 import './App.css';
+import PriceCalculator from './components/PriceCalculator';
 
 const imageData = [
   { image: img17, name: 'Hand Printed Prndant with pink and blue Agate Necklace' },
@@ -57,6 +58,7 @@ const imageData = [
       setHoveredIndex(null);
     };
     return (
+      <div>
       <div className='w-full flex flex-wrap aspect-w-1 aspect-h-1'>
         {imageData.map((data, index) => (
           <div key={index} className='w-1/2 sm:w-1/2 md:w-1/4 p-2 relative'>
@@ -73,6 +75,11 @@ const imageData = [
             </div>            </div>
           </div>
         ))}
+
+
+      </div>
+      <PriceCalculator />          
+
       </div>
     );
   }
