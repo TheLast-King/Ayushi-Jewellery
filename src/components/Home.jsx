@@ -1,20 +1,38 @@
-import React from 'react'
-import Sidebar from './sidebar.jsx'
-import Teachers from './Teachers.jsx'
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import config from "../config/config.js";
 
-const Home = () => {
-  return (
-    <div className='flex flex-row'>
-    <Sidebar />
-    <div className="flex flex-col p-4">
-    
-        <h1 className="text-2xl font-semibold">Welcome to the Dashboard!</h1>
-            <Teachers/>
-      </div>
+export default function Home(){
    
-      </div>
+  
+    const [data, setData] = useState([]);
 
-  )
+
+   useEffect(() => {
+    const fetchData = async () => {
+        const data = await axios.get(config.users).then((res) => res.data);
+        console.log(data.users)
+        // console.log(data);
+        setData(data.users);
+    }
+    fetchData()
+   }, [])
+   
+
+ 
+    return (
+       
+        <div>
+            Hi
+         
+            {data.map((item, index) => (
+    <div key={index}>{item.username}</div>
+))}
+
+           
+        </div>
+    );
+
+
 }
 
-export default Home

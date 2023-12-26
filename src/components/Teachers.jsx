@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import configURLS from '../config/config';
 
 const Teachers = () => {
     const [users, setUsers] = useState([]);
@@ -8,7 +9,7 @@ const Teachers = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/users');
+                const response = await axios.get(configURLS.users);
                 const data = response.data.users; 
                 console.log(data);  
                 setUsers(data);

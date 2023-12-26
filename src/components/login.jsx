@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import configURLS from '../config/config';
+import axios from 'axios';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -18,33 +20,21 @@ function Login() {
     event.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      console.log(formData)
+      const res = await axios.post(configURLS.login, formData);
+      const response = res.data
+     console.log(response)
   
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
+      // const data = await response.json();
   
-      const data = await response.json();
-  
-      // Check if login was successful based on the response
-      if (data && data.message === 'Login successful!') {
-        // Redirect to the home page or perform any other action upon successful login
+      if (response && response.message === 'Login successful!') {
         console.log('Login successful!');
-        // For example, redirecting to the home page
         window.location.href = '/home';
       } else {
         console.log('Password failed');
-        // Handle password failure, show error message, etc.
       }
     } catch (error) {
       console.error('Error:', error.message);
-      // Handle other errors, show error message, etc.
     }
   };
   
