@@ -2,51 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* For large screens */
+.aspect-video {
+  height: 400px; /* Set a specific height for large screens */
+  width: 300px;
+}
 
-.aspect-w-1 {
-    width: 100%;
+/* For medium screens */
+@media screen and (max-width: 1024px) {
+  .aspect-video {
+    height: calc(50vw - 100px); /* Adjust height for medium screens */
+    /* Assuming a 2:3 aspect ratio (height: width) */
+    width: calc((50vw - 100px) * 0.75); /* Calculate width for a 2:3 aspect ratio */
   }
-  
-  .aspect-h-1 {
-    height: 0;
-    padding-bottom: 100%; /* 1:1 aspect ratio */
-  }
+}
 
-  .tooltip:hover::after {
-    content: attr(title);
-    position: absolute;
-    background-color: black;
-    color: white;
-    padding: 5px;
-    font-size: 20em; /* Change this to adjust the font size */
-    z-index: 1;
+/* For small screens */
+@media screen and (max-width: 600px) {
+  .aspect-video {
+    height: calc(100vw - 50px); /* Adjust height for small screens */
+    /* Assuming a 2:3 aspect ratio (height: width) */
+    width: calc((100vw - 50px) * 0.5); /* Calculate width for a 2:3 aspect ratio */
   }
-  
-  .overlay-text {
-    position: absolute;
-    bottom: 2em;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-align: center;
-    padding: 8px;
-    font-weight: bold;
-    transition: transform 0.3s ease;
-    transform: translateY(100%);
-    filter: brightness(0.5); /* Initial title slightly dimmed */
+}
+@media screen and (max-width: 450px) {
+  .aspect-video {
+    height: calc(100vw - 50px)* 0.45; /* Adjust height for small screens */
+    /* Assuming a 2:3 aspect ratio (height: width) */
+    width: calc((100vw - 50px) * 0.45); /* Calculate width for a 2:3 aspect ratio */
   }
-  
-  .overlay-text:hover {
-    transform: translateY(0);
-    filter: brightness(1); /* Title highlighted on hover */
-  }
-  
-  img {
-    transition: filter 0.5s ease;
-  }
-  
-  img:hover {
-    filter: blur(2px); /* Image slightly blurred on hover */
-  }
-  
+}
+
+
+
